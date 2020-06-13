@@ -3,7 +3,7 @@
 ///
 /// @file sync.hpp
 /// @brief threading/time synchronisation functions. This is meant to be pure c++,
-/// please only include std libs...
+/// please only include std libs.
 
 #ifndef _SYNC_H_
 #define _SYNC_H_

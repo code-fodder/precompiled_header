@@ -13,3 +13,6 @@ dep/
 # UML output
 uml.*
 
+# Pre compiled header files
+*.gch
+*.gch.d

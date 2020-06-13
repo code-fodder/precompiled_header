@@ -1,0 +1,15 @@
+# vscode - cached files
+ipch/
+
+# make_utils
+analysis/
+docs/
+bin/
+lib/
+obj/
+dep/
+.build_prerequisites
+
+# UML output
+uml.*
+

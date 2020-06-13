@@ -7,7 +7,14 @@ include make_utils/common_variables.mk
 # Project Name
 PROJECT_NAME = timer
 
-POST_BUILD_TASKS = cd $(OUTPUT_DIR) && ./$(OUTPUT_FILE);
+POST_BUILD_TASKS  = $(ECHO) '$(COLOUR_MAK)remove previous PCHs$(COLOUR_RST)' ;
+POST_BUILD_TASKS += rm pch_* ;
+POST_BUILD_TASKS += $(ECHO) '$(COLOUR_MAK)Normal compilation ---------------------------------------------------$(COLOUR_RST)' ;
+POST_BUILD_TASKS += make cleanall ; time make ;
+POST_BUILD_TASKS += $(ECHO) '$(COLOUR_MAK)PCH compilation  -----------------------------------------------------$(COLOUR_RST)' ;
+POST_BUILD_TASKS += make cleanall ; time make precompiled_header ;
+POST_BUILD_TASKS += $(ECHO) '$(COLOUR_MAK)PCH re-compilation  --------------------------------------------------$(COLOUR_RST)' ;
+POST_BUILD_TASKS += make cleanall ; time make precompiled_header ;
 
 #######################################################################
 # Include the common makefiles:

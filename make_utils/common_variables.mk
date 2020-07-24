@@ -50,7 +50,7 @@ FLAGS_ANALYSE ?=
 FLAGS_SUB_MAKEFILE =
 
 ### Precompiled header flags
-PCH_HEADER = pch.hpp
+PCH_HEADER = make_utils/pch.hpp
 PCH_FILE =
 PCH_FILE_OBJ =
 PCH_FILE_DEP =

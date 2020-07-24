@@ -19,12 +19,17 @@ DEPS = $(subst $(OBJECT_DIR),$(DEP_DIR),$(OBJECTS:%.o=%.d)) $(PCH_FILE_DEP)
 
 # Precompiled header flags
 ### Precompiled header flags
-ifneq (,$(findstring true,$(USE_PRECOMPILED_HEADER)))
-  $(info ------------------------------------> using precompiled header <------------------------------------)
-  PCH_FILE = pch_$(TARGET)$(BUILD_TYPE).hpp
-  PCH_FILE_OBJ = $(PCH_FILE).gch
-  PCH_FILE_DEP = $(PCH_FILE_OBJ).d
-  FLAGS_PCH = -Winvalid-pch -include $(PCH_FILE)
+ifneq (,$(wildcard $(PCH_HEADER)))
+  $(info Precompiled header '$(PCH_HEADER)' found)
+  ifneq (,$(findstring true,$(USE_PRECOMPILED_HEADER)))
+    $(info ------------------------------------> using precompiled header <------------------------------------)
+    PCH_FILE = pch_$(TARGET)$(BUILD_TYPE).hpp
+    PCH_FILE_OBJ = $(PCH_FILE).gch
+    PCH_FILE_DEP = $(PCH_FILE_OBJ).d
+    FLAGS_PCH = -Winvalid-pch -include $(PCH_FILE)
+  endif
+else
+  $(info Precompiled header '$(PCH_HEADER)' not found)
 endif
 
 # Comiler flags
